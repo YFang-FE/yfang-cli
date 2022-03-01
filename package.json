@@ -1,0 +1,28 @@
+{
+  "name": "yfang-cli",
+  "version": "1.0.1",
+  "description": "圆方脚手架",
+  "main": "index.js",
+  "bin": {
+    "yfang-cli": "bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YFang-FE/yfang-cli.git"
+  },
+  "keywords": [
+    "yfang-cli"
+  ],
+  "author": "suporka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YFang-FE/yfang-cli/issues"
+  },
+  "engines": {
+    "node": "^12.0.0 || >= 14.0.0"
+  },
+  "homepage": "https://github.com/YFang-FE/yfang-cli#readme"
+}
