@@ -1,13 +1,17 @@
 {
   "name": "yfang-cli",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "圆方脚手架",
-  "main": "index.js",
+  "main": "libs/yfang-cli.umd.js",
+  "module": "libs/yfang-cli.es5.js",
+  "typings": "types/yfang-cli.d.ts",
   "bin": {
-    "yfang-cli": "bin/index.js"
+    "yfang-cli": "bin/yfang-cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:watch": "tsc -w",
+    "build": "tsc",
+    "start": "node bin/yfang-cli.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +28,25 @@
   "engines": {
     "node": "^12.0.0 || >= 14.0.0"
   },
-  "homepage": "https://github.com/YFang-FE/yfang-cli#readme"
+  "homepage": "https://github.com/YFang-FE/yfang-cli#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^9.0.0",
+    "fs-extra": "^10.0.1",
+    "inquirer": "^8.2.0",
+    "lodash.camelcase": "^4.3.0",
+    "minimist": "^1.2.5",
+    "ora": "^5.4.1",
+    "semver": "^7.3.5",
+    "slash": "^3.0.0",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/inquirer": "^8.2.0"
+  }
 }
