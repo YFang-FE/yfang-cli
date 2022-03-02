@@ -1,3 +1,4 @@
+
 import create from './lib/create'
 const requiredVersion = require('../package.json').engines.node
 const semver = require('semver')
@@ -39,6 +40,7 @@ program
   .command('create <name> [options...]')
   .description(`使用 ${require('../package').name} 创建项目`)
   .option('-m --merge', '合并文件夹')
+  .option('-f --force', '强制删除同名文件夹')
   .action((name: string, startOptions: string[], cmd: any) => {
     if (!name) {
       console.log(chalk.red(`请输入创建项目名称`))
@@ -48,5 +50,3 @@ program
   })
 
 program.parse(process.argv)
-
-

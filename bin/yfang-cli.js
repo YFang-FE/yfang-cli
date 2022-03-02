@@ -30,6 +30,7 @@ program
     .command('create <name> [options...]')
     .description("\u4F7F\u7528 ".concat(require('../package').name, " \u521B\u5EFA\u9879\u76EE"))
     .option('-m --merge', '合并文件夹')
+    .option('-f --force', '强制删除同名文件夹')
     .action(function (name, startOptions, cmd) {
     if (!name) {
         console.log(chalk.red("\u8BF7\u8F93\u5165\u521B\u5EFA\u9879\u76EE\u540D\u79F0"));

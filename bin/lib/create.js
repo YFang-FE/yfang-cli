@@ -38,7 +38,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 //fs-extra是fs的一个扩展，提供了非常多的便利API，并且继承了fs所有方法和为fs方法添加了promise的支持。
 var Creator_1 = require("./Creator");
-var createTools_1 = require("./utils/createTools");
 var log_1 = require("./utils/log");
 var spinner_1 = require("./spinner");
 var fs = require('fs-extra');
@@ -100,8 +99,7 @@ function create(projectName, options) {
                     _a.sent();
                     _a.label = 8;
                 case 8:
-                    console.log(name, options);
-                    creator = new Creator_1.default(name, targetDir, (0, createTools_1.getPromptModules)());
+                    creator = new Creator_1.default(name, targetDir);
                     return [4 /*yield*/, creator.create(options)];
                 case 9:
                     _a.sent();

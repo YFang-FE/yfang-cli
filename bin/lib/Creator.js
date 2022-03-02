@@ -37,20 +37,53 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var choose_1 = require("./choose");
+var spinner_1 = require("./spinner");
+var log_1 = require("./utils/log");
+var chalk = require('chalk');
+var download = require('download-git-repo');
 var Creator = /** @class */ (function () {
-    function Creator(name, context, promptModules) {
+    function Creator(name, context) {
         this.name = name;
         this.context = process.env.YFANG_CLI_CONTEXT = context;
     }
     Creator.prototype.create = function (options) {
         return __awaiter(this, void 0, void 0, function () {
-            var answer;
+            var answer, gitAddress;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, (0, choose_1.default)()];
                     case 1:
                         answer = _a.sent();
-                        console.log(answer);
+                        gitAddress = '';
+                        if (answer.projectType === 'Vue') {
+                            if (answer.VueVersion && answer.VueVersion in choose_1.RepoAddressMap) {
+                                gitAddress =
+                                    choose_1.RepoAddressMap[answer.VueVersion];
+                            }
+                        }
+                        else if (answer.projectType === 'Library') {
+                            if (answer.LibraryType) {
+                                gitAddress =
+                                    choose_1.RepoAddressMap[answer.LibraryType];
+                            }
+                        }
+                        if (gitAddress) {
+                            (0, spinner_1.logWithSpinner)('开始下载');
+                            download(gitAddress, this.name, function (err) {
+                                if (err) {
+                                    (0, spinner_1.failSpinner)(err);
+                                    (0, log_1.error)(err);
+                                }
+                                else {
+                                    (0, spinner_1.stopSpinner)(false);
+                                    (0, log_1.success)('模板下载成功，请自行安装依赖');
+                                }
+                            });
+                        }
+                        else {
+                            (0, log_1.error)('无法找到相应的模板');
+                            process.exit(1);
+                        }
                         return [2 /*return*/];
                 }
             });
